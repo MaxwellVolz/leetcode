@@ -35,17 +35,26 @@ def maxProfitAssignment(
     difficulty: List[int], profit: List[int], worker: List[int]
 ) -> int:
 
-    total_earn = 0
+    jobs = sorted(zip(difficulty, profit))
+    worker.sort()
+
+    job_index = 0
+    total_profit = 0
+    max_earn = 0
+
+    print(jobs)
 
     for skill in worker:
-        best_pay = 0
-        for i, job in enumerate(difficulty):
-            if skill >= job and profit[i] > best_pay:
-                best_pay = profit[i]
 
-        total_earn += best_pay
+        print(f"skill: {skill}")
 
-    return total_earn
+        while job_index < len(jobs) and skill >= jobs[job_index][0]:
+            max_earn = max(max_earn, jobs[job_index][1])
+            job_index += 1
+
+        total_profit += max_earn
+
+    return total_profit
 
 
 print(maxProfitAssignment([2, 4, 6, 8, 10], [10, 20, 30, 40, 50], [4, 5, 6, 7]))
