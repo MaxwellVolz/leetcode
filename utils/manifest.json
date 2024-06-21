@@ -1,0 +1,19 @@
+{
+    "name": "markify",
+    "manifest_version": 3,
+    "version": "1.0.0",
+    "description": "add button to leetcode to copy question as markdown",
+    "permissions": [
+        "activeTab"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://leetcode.com/problems/*"
+            ],
+            "js": [
+                "bundle.js"
+            ]
+        }
+    ]
+}
